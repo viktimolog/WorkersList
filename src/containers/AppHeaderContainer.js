@@ -7,7 +7,4 @@ const AppHeaderContainer = () => (
   <Header />
 )
 
-export default connect(
-  null,
-  null
-)(AppHeaderContainer)
+export default connect()(AppHeaderContainer)

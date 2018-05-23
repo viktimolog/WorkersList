@@ -7,6 +7,7 @@ import {
 } from 'react-native'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
+import ModalWindowEdit from './ModalWindowEdit'
 
 export default class Worker extends Component {
   // constructor (props) {
@@ -42,9 +43,10 @@ export default class Worker extends Component {
             {worker.name}
           </Text>
       <View style={styles.containerRight1}>
-        <TouchableOpacity onPress={() => editWorkerMode(worker.id)}>
-            <Icon name='edit' size={30} color='green'/>
-        </TouchableOpacity>
+      <ModalWindowEdit
+      worker={worker}
+      editWorkerMode={editWorkerMode}
+      />
       </View>
         <View style={styles.containerRight2}>
         <TouchableOpacity onPress={() => delWorker(worker.id)}>
@@ -64,7 +66,6 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     alignItems: 'center',
     flexDirection: 'row',
-    // justifyContent: 'space-between',//TODO
     height: 72,
     borderWidth: 1
   },

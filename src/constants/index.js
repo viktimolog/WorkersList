@@ -1,5 +1,5 @@
 export const MODES = {
-    ALL: 'All',
-    ACTIVE: 'Active',
-    COMPLETED: 'Completed'
+    ADD: 'ADD',
+    EDIT: 'EDIT',
+    BASE: 'BASE'
 };

@@ -11,69 +11,11 @@ import {
         } from 'react-native';
 // import {   } from 'native-base';//TODO
 import {TextConstants} from '../constants/TextConstants';
-import DatePicker from 'react-native-datepicker'
+import ModalWindow from './ModalWindow'
 
-export default class WorkerInput extends Component {
-  state = {
-  modalVisible: false,
-  name: '',
-  date: '',
-  position: '',
-  salary: '',
-  search: ''
-}
+export default class WorkerInput extends Component{
 
-addNewItemHandler = () => {
-  if( (this.state.name.trim() === '') ||
-      (this.state.date.trim() === '') ||
-      (this.state.position.trim() === '') ||
-      (this.state.salary.trim() === '')
-    )
-    {
-      alert('Please, fill all the fields!');
-      return;
-    }
-
-    const newWorker = {
-      id: Math.floor(Date.now() / 1000),
-      name: this.state.name.trim(),
-      birthday: this.state.birthday,
-      position: this.state.position.trim(),
-      salary: this.state.salary.trim()
-    }
-
-    this.props.addWorker(newWorker);
-    this.setModalVisible(false);
-}
-
-salaryHandler = val => {
-  this.setState({
-    salary: val.replace(/[^0-9]/g, '')
-  })
-}
-
-nameHandler = val => {
-  this.setState({
-    name: val.replace(/[^ а-яА-ЯеЁa-zA-Z]/g, '')
-  })
-}
-
-positionHandler = val => {
-    this.setState({
-      position: val.replace(/[^ а-яА-ЯеЁa-zA-Z]/g, '')
-    })
-}
-
-setModalVisible(visible){
-  this.setState({
-    modalVisible: visible,
-    name: '',
-    date: '',
-    position: '',
-    salary: '',
-    search: ''
-  })
-}
+  state = {search: ''}
 
   searchHandler = val => {
     this.setState({
@@ -82,85 +24,8 @@ setModalVisible(visible){
     this.props.findWorker(val);
   };
 
-  // workerSubmitHandler = () => {
-  //   if (this.state.workerName.trim() === '') {
-  //     return;
-  //   }
-  //   this.props.onPlaceAdded(this.state.workerName);
-  // };
-
   render() {
     return (
-      <View>
-      <Modal
-      animationType='fade'
-      transparent={false}
-      visible={this.state.modalVisible}
-      onRequestClose={() => {
-        this.setModalVisible(false)
-      }}>
-      <View>
-        <View style={styles.container}>
-          <Button
-            title={TextConstants.CANCEL}
-            style={styles.workerButton}
-            onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
-          />
-          <Text style={{color: 'red', fontSize: 18}}>{TextConstants.ADD}</Text>
-          <Button
-            title={TextConstants.DONE}
-            style={styles.workerButton}
-            onPress={this.addNewItemHandler}
-          />
-        </View>
-        <View style={styles.containerInput}>
-        <Text style={styles.h1}>{TextConstants.NAME}</Text>
-          <TextInput
-            style={styles.text}
-            autoFocus={true}
-            onChangeText={this.nameHandler}
-            value={this.state.name}>
-          </TextInput>
-          <Text style={styles.h1}>{TextConstants.BIRTHDAY}</Text>
-          <DatePicker
-            style={{width: 200, padding: 10}}
-            date={this.state.date}
-            mode='date'
-            placeholder='select date'
-            format='YYYY-MM-DD'
-            minDate='1940-01-01'
-            maxDate='2000-01-01'
-            confirmBtnText='Confirm'
-            cancelBtnText='Cancel'
-            customStyles={{
-              dateIcon: {
-                position: 'absolute',
-                left: 0,
-                top: 4,
-                marginLeft: 0
-              },
-              dateInput: {
-                marginLeft: 36
-              }
-            }}
-            onDateChange={(date) => {this.setState({date: date})}}
-          />
-          <Text style={styles.h1}>{TextConstants.POSITION}</Text>
-            <TextInput
-              style={styles.text}
-              onChangeText={this.positionHandler}
-              value={this.state.position}>
-            </TextInput>
-            <Text style={styles.h1}>{TextConstants.SALARY}</Text>
-              <TextInput
-                keyboardType='numeric'
-                style={styles.text}
-                onChangeText={this.salaryHandler}
-                value={this.state.salary}>
-              </TextInput>
-        </View>
-      </View>
-    </Modal>  
     <View style={styles.inputContainer}>
       <TextInput
         placeholder={TextConstants.SEARCH}
@@ -168,13 +33,8 @@ setModalVisible(visible){
         onChangeText={this.searchHandler}
         style={styles.workerInput}
       />
-      <Button
-        title={TextConstants.ADD}
-        style={styles.workerButton}
-        onPress={() => {this.setModalVisible(true)}}
-      />
+      <ModalWindow addWorker={this.props.addWorker}/>
     </View>
-  </View>
     )
   }
 }

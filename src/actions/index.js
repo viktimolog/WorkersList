@@ -13,7 +13,9 @@ export const delWorker = id => ({type: DEL_WORKER, id});
 
 export const addWorker = newWorker => ({type: ADD_WORKER, newWorker});
 
-export const editWorkerMode = id => ({type: EDIT_WORKER_MODE, id});
+export const editWorkerMode = selectedWorker => ({
+  type: EDIT_WORKER_MODE, selectedWorker
+});
 
 export const editWorkerSave = (id, text) => ({type: EDIT_WORKER_SAVE, id, name});
 

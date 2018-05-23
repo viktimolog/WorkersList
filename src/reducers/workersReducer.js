@@ -11,17 +11,17 @@ const initialState = {
     {
       id: Math.floor(Date.now() / 1000),
       name: 'Ivanov Ivan Ivanovich',
-      birthday: '19.01.1978',
+      birthday: '1978-01-19',
       position: 'master',
       salary:'1200'
     },
     {
       id: Math.floor(Date.now() / 1000)+1,
       name: 'Peter Petrov Petrovich',
-      birthday: '23.11.1968',
+      birthday: '1989-11-23',
       position: 'engineer',
       salary:'800'
-    },
+    }
   ]
 }
 
@@ -41,19 +41,34 @@ export default (state = initialState, action) => {
         }
     }
 
+//action.selectedWorker
     case EDIT_WORKER_MODE: {
-      alert('editWorkerMode');
-      return {...state};
+      return {     
+        workers: [action.selectedWorker,
+          ...state.workers.filter(worker => worker.id !== action.selectedWorker.id)]
+      }
     }
 
     case EDIT_WORKER_SAVE: {
 
     }
 
-//TODO I am doing it now
+//TODO   action.text
     case FIND_WORKER: {
-      alert('FIND_WORKER');
-      return {...state};
+
+      // let newArr = new Set();
+      // for(let i=0; i<state.workers.length; i++){
+      //   let res = undefined;
+      //   res = state.workers[i].name.find(f => f === action.text);
+      //   if(res !== undefined)
+      //   newArr.push(state.workers[i]);
+      // }
+      //   return {
+      //     ...state,
+      //     workers: newArr
+      //   }
+        alert('findWorker');
+        return {...state};
     }
 
     default:
