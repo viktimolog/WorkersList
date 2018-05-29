@@ -1,77 +1,57 @@
 import {
   DEL_WORKER,
   ADD_WORKER,
-  EDIT_WORKER_SAVE,
-  EDIT_WORKER_MODE,
-  FIND_WORKER
+  EDIT_WORKER,
+  FIND_WORKER,
+  GET_WORKERS
 } from '../actions/actionTypes'
 
-const initialState = {
-  workers: [
-    {
-      id: Math.floor(Date.now() / 1000),
-      name: 'Ivanov Ivan Ivanovich',
-      birthday: '1978-01-19',
-      position: 'master',
-      salary:'1200'
-    },
-    {
-      id: Math.floor(Date.now() / 1000)+1,
-      name: 'Peter Petrov Petrovich',
-      birthday: '1989-11-23',
-      position: 'engineer',
-      salary:'800'
-    }
-  ]
-}
+const initialState = { workers: [] }
 
 export default (state = initialState, action) => {
   switch (action.type) {
 
-    case DEL_WORKER: {
-        return {
-          ...state,
-          workers: state.workers.filter(worker => worker.id !== action.id)
-        }
-    }
-
-    case ADD_WORKER: {
-        return {
-          workers: [action.newWorker, ...state.workers]
-        }
-    }
-
-//action.selectedWorker
-    case EDIT_WORKER_MODE: {
-      return {     
-        workers: [action.selectedWorker,
-          ...state.workers.filter(worker => worker.id !== action.selectedWorker.id)]
+    case EDIT_WORKER: {
+      return {
+        ...state,
+        workers: [action.payload, ...state.workers.filter(worker => worker._id !== action.payload._id)]
       }
     }
 
-    case EDIT_WORKER_SAVE: {
-
+    case DEL_WORKER: {
+      return {
+        ...state,
+        workers: state.workers.filter(worker => worker._id !== action.payload)
+      }
     }
 
-//TODO   action.text
-    case FIND_WORKER: {
+    case ADD_WORKER: {
+      return {
+        ...state,
+        workers: [action.payload, ...state.workers]
+      }
+    }
 
-      // let newArr = new Set();
-      // for(let i=0; i<state.workers.length; i++){
-      //   let res = undefined;
-      //   res = state.workers[i].name.find(f => f === action.text);
-      //   if(res !== undefined)
-      //   newArr.push(state.workers[i]);
-      // }
-      //   return {
-      //     ...state,
-      //     workers: newArr
-      //   }
-        alert('findWorker');
-        return {...state};
+    case FIND_WORKER: {
+      if (action.text.trim() === '')
+        return {
+          ...state,
+          workers: action.payload
+        }
+      return {
+        ...state,
+        workers: action.payload.filter(worker => worker.name.includes(action.text.trim()))
+      }
+    }
+
+    case GET_WORKERS: {
+      return {
+        ...state,
+        workers: action.payload,
+      };
     }
 
     default:
       return state
   }
-};
+}

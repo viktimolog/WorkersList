@@ -1,33 +1,56 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Workers from '../components/Workers'
 import { connect } from 'react-redux'
-import { delWorker, editWorkerSave, editWorkerMode } from '../actions'
+import {
+  delWorker,
+  editWorker,
+  getWorkers
+} from '../actions'
 import PropTypes from 'prop-types'
+import axios from 'axios'
+import Urls from '../constants/Urls'
 
-const mapStateToProps = state => ({
-  mode: state.modesReducer.mode,
-  workers: state.workersReducer.workers
-})
+class WorkersContainer extends Component {
 
-const WorkersContainer = ({workers, delWorker, editWorkerSave, editWorkerMode}) => (
-  <Workers
-    workers={workers}
-    delWorker={delWorker}
-    editWorkerSave={editWorkerSave}
-    editWorkerMode={editWorkerMode}/>)
+  async getData(url) {
+    try {
+      const response = await axios.get(url).then(res => res.data);
+      this.props.getWorkers(response);
+    } catch (error) {
+      alert('error = '+error);
+    }
+  }
+
+  componentDidMount() {
+    this.getData(Urls.getWorkers);
+  }
+
+  render() {
+    return (
+      <Workers
+        workers={this.props.workers}
+        getWorkers={this.props.getWorkers}
+        delWorker={this.props.delWorker}
+        editWorker={this.props.editWorker} />
+    )
+  }
+}
 
 WorkersContainer.propTypes = {
   workers: PropTypes.array.isRequired,
   delWorker: PropTypes.func.isRequired,
-  editWorkerSave: PropTypes.func.isRequired,
-  editWorkerMode: PropTypes.func.isRequired
+  editWorker: PropTypes.func.isRequired
 }
+
+const mapStateToProps = state => ({
+  workers: state.workersReducer.workers
+})
 
 export default connect(
   mapStateToProps,
   {
     delWorker,
-    editWorkerSave,
-    editWorkerMode
+    editWorker,
+    getWorkers
   }
 )(WorkersContainer)

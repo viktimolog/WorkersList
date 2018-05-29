@@ -1,22 +1,111 @@
 import {
-    SET_MODE,
-    DEL_WORKER,
-    ADD_WORKER,
-    EDIT_WORKER_MODE,
-    EDIT_WORKER_SAVE,
-    FIND_WORKER
+  DEL_WORKER,
+  ADD_WORKER,
+  EDIT_WORKER,
+  FIND_WORKER,
+  GET_WORKERS
 } from './actionTypes';
+import Urls from '../constants/Urls'
+import TextConstants from '../constants/TextConstants'
+import axios from 'axios'
 
-export const setMode = mode => ({type: SET_MODE, mode});
+// Find Worker
+export const findWorker = text => dispatch => {
+  axios
+    .get(Urls.getWorkers)
+    .then(res =>
+      dispatch({
+        type: FIND_WORKER,
+        payload: res.data,
+        text: text
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: FIND_WORKER,
+        payload: null
+      })
+    )
+}
 
-export const delWorker = id => ({type: DEL_WORKER, id});
+// Edit Worker
+export const editWorker = selectedWorker => dispatch => {
+  axios
+    .put(Urls.delWorker + selectedWorker._id, selectedWorker)
+    .then(res => {
+      alert('The worker has been edited!');
+      dispatch({
+        type: EDIT_WORKER,
+        payload: selectedWorker
+      })
+    }
+    )
+    .catch(err =>
+      dispatch({
+        type: EDIT_WORKER,
+        payload: err.response.data
+      })
+    )
+}
 
-export const addWorker = newWorker => ({type: ADD_WORKER, newWorker});
+// Delete Worker
+export const delWorker = id => dispatch => {
+  axios
+    .delete(Urls.delWorker + id)
+    .then(res => {
+      alert('Worker has been deleted');
+      dispatch({
+        type: DEL_WORKER,
+        payload: id
+      })
+    }
+    )
+    .catch(err =>
+      dispatch({
+        type: DEL_WORKER,
+        payload: err.response.data
+      })
+    )
+}
 
-export const editWorkerMode = selectedWorker => ({
-  type: EDIT_WORKER_MODE, selectedWorker
-});
+// Add Worker
+export const addWorker = newWorker => dispatch => {
+  axios
+    .post(Urls.addWorker, newWorker)
+    .then(res => {
+      if (res.data.success) {
+        alert('New worker has been added!');
+        dispatch({
+          type: ADD_WORKER,
+          payload: res.data.worker
+        })
+      } else {
+        alert('This worker has been already added!');
+      }
+    }
+    )
+    .catch(err =>
+      dispatch({
+        type: ADD_WORKER,
+        payload: null
+      })
+    )
+}
 
-export const editWorkerSave = (id, text) => ({type: EDIT_WORKER_SAVE, id, name});
-
-export const findWorker = text => ({type: FIND_WORKER, text});
+// Get Workers
+export const getWorkers = () => dispatch => {
+  axios
+    .get(Urls.getWorkers)
+    .then(res =>
+      dispatch({
+        type: GET_WORKERS,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_WORKERS,
+        payload: null
+      })
+    )
+}

@@ -11,7 +11,6 @@ const App = () => (
   <Provider store={store}>
     <Container>
       <AppHeaderContainer/>
-      <StatusBar backgroundColor='green' barStyle="light-content"/>
       <WorkerInputContainer/>
       <WorkersContainer/>
     </Container>

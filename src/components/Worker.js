@@ -5,57 +5,42 @@ import {
   TouchableOpacity,
   Text
 } from 'react-native'
-
 import Icon from 'react-native-vector-icons/FontAwesome'
 import ModalWindowEdit from './ModalWindowEdit'
+import PropTypes from 'prop-types'
 
 export default class Worker extends Component {
-  // constructor (props) {
-  //   super(props)
-  //   this.state = {
-  //     text: props.worker.text,
-  //     maxLength: 46
-  //   }
-  // }
-  //
-  // componentWillReceiveProps (nextProps) {
-  //   this.setState({
-  //     text: nextProps.worker.text
-  //   })
-  // }
-
-  // componentDidUpdate () {
-  //   if (this.props.todo.editable) {
-  //     this.itemInput.focus()
-  //   }
-  // }
-
-  // onSubmit = () => {
-  //   if (this.props.worker.editable)
-  //     this.props.editWorkerSave(this.props.worker.id, this.state.text)
-  // }
-
-  render () {
-    const {worker, delWorker, editWorkerMode, editWorkerSave} = this.props
+  render() {
+    const {
+      worker,
+      delWorker,
+      editWorker
+    } = this.props
     return (
       <View style={styles.container}>
-          <Text style={styles.text}>
-            {worker.name}
-          </Text>
-      <View style={styles.containerRight1}>
-      <ModalWindowEdit
-      worker={worker}
-      editWorkerMode={editWorkerMode}
-      />
-      </View>
+        <Text style={styles.text}>
+          {worker.name}
+        </Text>
+        <View style={styles.containerRight1}>
+          <ModalWindowEdit
+            worker={worker}
+            editWorker={editWorker}
+          />
+        </View>
         <View style={styles.containerRight2}>
-        <TouchableOpacity onPress={() => delWorker(worker.id)}>
-          <Icon name='trash' size={30} color='red'/>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity onPress={() => delWorker(worker._id)}>
+            <Icon name='trash' size={30} color='red' />
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
+}
+
+Worker.propTypes = {
+  worker: PropTypes.object.isRequired,
+  editWorker: PropTypes.func.isRequired,
+  delWorker: PropTypes.func.isRequired,
 }
 
 const styles = StyleSheet.create({
