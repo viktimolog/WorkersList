@@ -7,7 +7,7 @@ const AppHeader = () => (
   <Header>
     <Body style={styles.container}>
     <Title>
-      WorkerList: Redux, Local State
+      WorkersList: MERN, redux-thunk, mongoDB
     </Title>
     </Body>
   </Header>

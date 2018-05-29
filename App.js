@@ -16,5 +16,4 @@ const App = () => (
     </Container>
   </Provider>
 )
-
 export default App

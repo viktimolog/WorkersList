@@ -9,7 +9,6 @@ import {
   TextInput,
   StyleSheet
 } from 'react-native';
-// import {   } from 'native-base';//TODO
 import { TextConstants } from '../constants/TextConstants';
 import DatePicker from 'react-native-datepicker'
 
@@ -84,13 +83,11 @@ export default class ModalWindow extends Component {
             <View style={styles.container}>
               <Button
                 title={TextConstants.CANCEL}
-                style={styles.workerButton}
                 onPress={() => { this.setModalVisible(!this.state.modalVisible) }}
               />
               <Text style={{ color: 'red', fontSize: 18 }}>{TextConstants.ADD}</Text>
               <Button
                 title={TextConstants.DONE}
-                style={styles.workerButton}
                 onPress={this.addNewItemHandler}
               />
             </View>
@@ -144,7 +141,6 @@ export default class ModalWindow extends Component {
         </Modal>
         <Button
           title={TextConstants.ADD}
-          style={styles.workerButton}
           onPress={() => { this.setModalVisible(true) }}
         />
       </View>
@@ -153,49 +149,10 @@ export default class ModalWindow extends Component {
 }
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 10,
-    borderWidth: 1
-  },
-  workerInput: {
-    width: '55%',
-    borderWidth: 1
-  },
-  workerButton: {
-    width: '45%'
-  },
-
-  //TODO delete do not use
-
-  addButton: {
-    backgroundColor: 'green',
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    borderColor: '#ccc',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 96,
-  },
-  addButtonText: {
-    color: '#fff',
-    fontSize: 28
-  },
   containerInput: {
     paddingLeft: '8%',
     width: '92%',
     paddingTop: 10
-  },
-  containerText: {
-    paddingTop: 50
-  },
-  textCenter: {
-    fontSize: 16,
-    textAlign: 'center'
   },
   container: {
     paddingLeft: 20,
@@ -216,9 +173,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'green',
     paddingTop: 10
-  },
-  textRight: {
-    fontSize: 16,
-    textAlign: 'right'
   }
 });
