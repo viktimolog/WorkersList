@@ -4,15 +4,14 @@ import { connect } from 'react-redux';
 import { addWorker, findWorker } from '../actions';
 import PropTypes from 'prop-types';
 
-const WorkerInputContainer = ({addWorker, findWorker}) => (
+const WorkerInputContainer = ({ addWorker, findWorker }) => (
   <WorkerInput
-   addWorker={addWorker}
-   findWorker={findWorker}
-   />
-)
+    addWorker={addWorker}
+    findWorker={findWorker} />)
 
 WorkerInputContainer.propTypes = {
-  addWorker: PropTypes.func.isRequired
+  addWorker: PropTypes.func.isRequired,
+  findWorker: PropTypes.func.isRequired
 }
 
 export default connect(

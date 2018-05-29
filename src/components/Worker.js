@@ -74,16 +74,6 @@ const styles = StyleSheet.create({
     height: 72,
     borderWidth: 1
   },
-  containerText: {
-    flex: 1,
-    justifyContent: 'space-between',
-    marginLeft: 30,
-    marginRight: 20
-  },
-  textCompleted: {
-    fontSize: 16,
-    color: 'lightgray'
-  },
   text: {
     fontSize: 16,
     color: 'blue'

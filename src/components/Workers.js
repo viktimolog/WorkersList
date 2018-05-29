@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 
 const Workers = ({
   workers = [],
-  getWorkers = () => { },
   editWorker = () => { },
   delWorker = () => { }
 }) => (
@@ -17,7 +16,6 @@ const Workers = ({
             <Worker
               worker={worker}
               key={worker._id}
-              getWorkers={getWorkers}
               delWorker={delWorker}
               editWorker={editWorker} />)
         }
@@ -28,8 +26,7 @@ const Workers = ({
 Workers.propTypes = {
   workers: PropTypes.array.isRequired,
   editWorker: PropTypes.func.isRequired,
-  delWorker: PropTypes.func.isRequired,
-  getWorkers: PropTypes.func.isRequired
+  delWorker: PropTypes.func.isRequired
 }
 
 export default Workers;

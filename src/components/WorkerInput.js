@@ -26,18 +26,18 @@ export default class WorkerInput extends Component {
 
   render() {
     return (
-          <Header searchBar rounded>
-            <Item style={{ backgroundColor: 'lightgray', borderRadius: 5 }}>
-              <Icon name="ios-search" />
-              <Input 
-              placeholder={TextConstants.SEARCH}
-              onChangeText={this.searchHandler} 
-              value={this.state.search} />
-            </Item>
-            <View  style={{ justifyContent: 'center', paddingLeft: 10 }}>
-            <ModalWindow addWorker={this.props.addWorker}/>
-            </View>
-          </Header>          
+      <Header searchBar rounded>
+        <Item style={{ backgroundColor: 'lightgray', borderRadius: 5 }}>
+          <Icon name="ios-search" />
+          <Input
+            placeholder={TextConstants.SEARCH}
+            onChangeText={this.searchHandler}
+            value={this.state.search} />
+        </Item>
+        <View style={{ justifyContent: 'center', paddingLeft: 10 }}>
+          <ModalWindow addWorker={this.props.addWorker} />
+        </View>
+      </Header>
     )
   }
 }

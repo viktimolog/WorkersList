@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container } from 'native-base'
-import { StatusBar } from 'react-native'
 import WorkersContainer from './src/containers/WorkersContainer'
 import WorkerInputContainer from './src/containers/WorkerInputContainer'
 import AppHeaderContainer from './src/containers/AppHeaderContainer'

@@ -1,6 +1,7 @@
+const baseUrl = 'https://workerslist1.herokuapp.com/api/workers/'
 const Urls = {
-    addWorker: 'https://workerslist1.herokuapp.com/api/workers/addWorker',
-    delWorker: 'https://workerslist1.herokuapp.com/api/workers/',
-    getWorkers: 'https://workerslist1.herokuapp.com/api/workers/getWorkers'
+    addWorker: baseUrl + 'addWorker',
+    delWorker: baseUrl,
+    getWorkers: baseUrl + 'getWorkers'
 };
 export default Urls;

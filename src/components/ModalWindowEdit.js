@@ -151,49 +151,10 @@ export default class ModalWindowEdit extends Component {
 }
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 10,
-    borderWidth: 1
-  },
-  workerInput: {
-    width: '55%',
-    borderWidth: 1
-  },
-  workerButton: {
-    width: '45%'
-  },
-
-  //TODO delete do not use
-
-  addButton: {
-    backgroundColor: 'green',
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    borderColor: '#ccc',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 96,
-  },
-  addButtonText: {
-    color: '#fff',
-    fontSize: 28
-  },
   containerInput: {
     paddingLeft: '8%',
     width: '92%',
     paddingTop: 10
-  },
-  containerText: {
-    paddingTop: 50
-  },
-  textCenter: {
-    fontSize: 16,
-    textAlign: 'center'
   },
   container: {
     paddingLeft: 20,
@@ -214,9 +175,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'green',
     paddingTop: 10
-  },
-  textRight: {
-    fontSize: 16,
-    textAlign: 'right'
   }
 });
