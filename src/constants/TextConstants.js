@@ -10,5 +10,8 @@ export const TextConstants = {
     SELECTDATE: 'select date',
     FORMATDATE: 'YYYY-MM-DD',
     MINDATE: '1940-01-01',
-    MAXDATE: '2000-01-01'
+    MAXDATE: '2000-01-01',
+    FILLALLTHEFIELDS: 'Please, fill all the fields!',
+    TITLEAPP: 'WorkersList: MERN, mongoDB, redux-thunk',
+    PLEASEWAIT: 'Please wait while data is loading'
 };
