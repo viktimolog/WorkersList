@@ -10,11 +10,18 @@ import ModalWindowEdit from './ModalWindowEdit'
 import PropTypes from 'prop-types'
 
 export default class Worker extends Component {
+
+delHandler = () =>{
+  this.props.setGetData();
+  this.props.delWorker(this.props.worker._id);
+}
+
   render() {
     const {
       worker,
       delWorker,
-      editWorker
+      editWorker,
+      setGetData
     } = this.props
     return (
       <View style={styles.container}>
@@ -25,10 +32,11 @@ export default class Worker extends Component {
           <ModalWindowEdit
             worker={worker}
             editWorker={editWorker}
+            setGetData={setGetData}
           />
         </View>
         <View style={styles.containerRight2}>
-          <TouchableOpacity onPress={() => delWorker(worker._id)}>
+          <TouchableOpacity onPress={this.delHandler}>
             <Icon name='trash' size={30} color='red' />
           </TouchableOpacity>
         </View>

@@ -38,6 +38,7 @@ export default class ModalWindow extends Component {
       salary: this.state.salary.trim()
     }
     this.setModalVisible(false);
+    this.props.setGetData();
     this.props.addWorker(newWorker);
   }
 

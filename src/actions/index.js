@@ -3,7 +3,8 @@ import {
   ADD_WORKER,
   EDIT_WORKER,
   FIND_WORKER,
-  GET_WORKERS
+  GET_WORKERS,
+  SET_GETDATA
 } from './actionTypes';
 import Urls from '../constants/Urls'
 import TextConstants from '../constants/TextConstants'
@@ -77,7 +78,8 @@ export const addWorker = newWorker => dispatch => {
         alert('New worker has been added!');
         dispatch({
           type: ADD_WORKER,
-          payload: res.data.worker
+          payload: res.data.worker,
+          // getData: true
         })
       } else {
         alert('This worker has been already added!');
@@ -108,4 +110,13 @@ export const getWorkers = () => dispatch => {
         payload: null
       })
     )
+}
+
+// GETDATA true
+export const setGetData = search => dispatch => {
+      dispatch({
+        type: SET_GETDATA,
+        payload: true,
+        search
+      })
 }

@@ -37,8 +37,9 @@ export default class ModalWindowEdit extends Component {
       position: this.state.position.trim(),
       salary: this.state.salary.trim()
     }
-    this.props.editWorker(newWorker);
     this.setModalVisible(false);
+    this.props.setGetData();
+    this.props.editWorker(newWorker);
   }
 
   salaryHandler = val => {

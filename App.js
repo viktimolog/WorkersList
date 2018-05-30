@@ -9,10 +9,9 @@ import store from './src/store'
 const App = () => (
   <Provider store={store}>
     <Container>
-      <AppHeaderContainer/>
-      <WorkerInputContainer/>
-      <WorkersContainer/>
+      <AppHeaderContainer />
+      <WorkerInputContainer />
+      <WorkersContainer />
     </Container>
-  </Provider>
-)
+  </Provider>)
 export default App

@@ -7,7 +7,8 @@ import PropTypes from 'prop-types'
 const Workers = ({
   workers = [],
   editWorker = () => { },
-  delWorker = () => { }
+  delWorker = () => { },
+  setGetData = () => { }
 }) => (
     <Content>
       <ScrollView>
@@ -16,6 +17,7 @@ const Workers = ({
             <Worker
               worker={worker}
               key={worker._id}
+              setGetData={setGetData}
               delWorker={delWorker}
               editWorker={editWorker} />)
         }
@@ -26,7 +28,8 @@ const Workers = ({
 Workers.propTypes = {
   workers: PropTypes.array.isRequired,
   editWorker: PropTypes.func.isRequired,
-  delWorker: PropTypes.func.isRequired
+  delWorker: PropTypes.func.isRequired,
+  setGetData: PropTypes.func.isRequired
 }
 
 export default Workers;
