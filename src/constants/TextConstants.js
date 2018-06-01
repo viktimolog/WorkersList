@@ -13,7 +13,7 @@ export const TextConstants = {
   MINDATE: '1940-01-01',
   MAXDATE: '2000-01-01',
   FILLALLTHEFIELDS: 'Please, fill all the fields!',
-  TITLEAPP: 'WorkersList: MERN, mongoDB, redux-thunk',
+  TITLEAPP: 'WorkersList: MERN, redux-thunk',
   PLEASEWAIT: 'Please wait while data is loading',
   SERVETNOTRESP: 'Sorry, the server is not responding now! Try later!',
   WORKEREDITED: 'The worker has been edited!',
